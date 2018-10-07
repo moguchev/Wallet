@@ -77,6 +77,5 @@ if (UNIX AND NOT APPLE)
 endif()
 
 
-
 install(TARGETS ${APP_NAME}
     RUNTIME DESTINATION bin)
