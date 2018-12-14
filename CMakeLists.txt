@@ -15,7 +15,7 @@ huntergate(
 
 project(wallet)
 string(APPEND CMAKE_CXX_FLAGS " -pedantic -Wextra")
-string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
+#string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
 string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 
 find_package(Qt5Core REQUIRED)
