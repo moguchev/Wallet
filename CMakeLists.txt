@@ -63,7 +63,7 @@ add_executable(tests
 target_include_directories(tests 
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/offline_wallet
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/online_wallet
-  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/includes
+  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 target_include_directories(wallet
