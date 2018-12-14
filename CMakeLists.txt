@@ -15,7 +15,6 @@ huntergate(
 
 project(wallet)
 string(APPEND CMAKE_CXX_FLAGS " -pedantic -Wextra")
-#string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
 string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 
 find_package(Qt5Core REQUIRED)
@@ -23,7 +22,6 @@ find_package(Qt5Gui REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Network REQUIRED)
 
-hunter_config(OpenSSL VERSION 1.0.1h)
 hunter_add_package(OpenSSL)
 find_package(OpenSSL REQUIRED)
 hunter_add_package(GTest)
@@ -80,16 +78,6 @@ qt5_use_modules(wallet
   Network
   Core
   Gui)
-
-#target_link_libraries(wallet
-#	PUBLIC 
-#	GTest::main
-#	Boost::system
-# 	Boost::thread
-#	Boost::filesystem
-#	OpenSSL::SSL
-#	OpenSSL::Crypto
-#)
 
 target_link_libraries(tests
 	PUBLIC
