@@ -6,7 +6,7 @@ set(CMAKE_AUTOMOC ON)
 
 option(BUILD_COVERAGE "Build coverage" OFF)
 
-include("tools/gate/cmake/HunterGate.cmake")
+include("gate/cmake/HunterGate.cmake")
 
 huntergate(
   URL "https://github.com/ruslo/hunter/archive/v0.23.34.tar.gz"
