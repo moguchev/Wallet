@@ -78,16 +78,16 @@ qt5_use_modules(wallet
   Core
   Gui)
 
-target_link_libraries(wallet
-	PUBLIC 
-	GTest::main 
-	Boost::boost
-	Boost::system
-  	Boost::thread
-	Boost::filesystem
-	OpenSSL::SSL
-	OpenSSL::Crypto
-)
+#target_link_libraries(wallet
+#	PUBLIC 
+#	GTest::main 
+#	Boost::boost
+#	Boost::system
+# 	Boost::thread
+#	Boost::filesystem
+#	OpenSSL::SSL
+#	OpenSSL::Crypto
+#)
 
 target_link_libraries(tests
 	PUBLIC
