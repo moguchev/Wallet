@@ -24,13 +24,14 @@ find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Network REQUIRED)
 
 hunter_add_package(OpenSSL)
-hunter_add_package(GTest)
-hunter_add_package(Boost COMPONENTS thread system)
-find_package(Boost CONFIG REQUIRED thread system)
-find_package(GTest CONFIG REQUIRED)
 find_package(OpenSSL REQUIRED)
+hunter_add_package(GTest)
+find_package(GTest CONFIG REQUIRED)
+hunter_add_package(Boost COMPONENTS thread filesystem system)
+find_package(Boost CONFIG REQUIRED thread filesystem system)
 
-add_executable(wallet
+
+add_library(wallet STATIC
   ${CMAKE_CURRENT_SOURCE_DIR}/src/CryptoUtils.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/JsonUtils.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/Key.cpp
@@ -59,12 +60,13 @@ add_executable(tests
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
 )
 
-target_include_directories(wallet
+target_include_directories(tests 
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/offline_wallet
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/online_wallet
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/includes
 )
-target_include_directories(tests 
+
+target_include_directories(wallet
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/offline_wallet
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/online_wallet
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/includes
@@ -76,12 +78,27 @@ qt5_use_modules(wallet
   Core
   Gui)
 
-target_link_libraries(wallet 
-  PUBLIC Boost::thread Boost::system Boost::boost 
-  PUBLIC OpenSSL::SSL OpenSSL::Crypto)
-target_link_libraries(tests PUBLIC GTest::main wallet 
-  PUBLIC Boost::thread Boost::system Boost::boost 
-  PUBLIC OpenSSL::SSL OpenSSL::Crypto)
+target_link_libraries(wallet
+	PUBLIC 
+	GTest::main 
+	Boost::boost
+	Boost::system
+  	Boost::thread
+	Boost::filesystem
+	OpenSSL::SSL
+	OpenSSL::Crypto
+)
+
+target_link_libraries(tests
+	PUBLIC
+	GTest::main 
+	Boost::boost
+	Boost::system
+  	Boost::thread
+	Boost::filesystem
+	OpenSSL::SSL
+	OpenSSL::Crypto
+)
 
 enable_testing()
 add_test(NAME unit_tests COMMAND tests) 
