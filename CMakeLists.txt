@@ -9,10 +9,10 @@ option(BUILD_COVERAGE "Build coverage" OFF)
 
 include("gate/cmake/HunterGate.cmake")
 
-#huntergate(
-#  URL "https://github.com/ruslo/hunter/archive/v0.23.34.tar.gz"
-#  SHA1 "70287b1ffa810ee4e952052a9adff9b4856d0d54"
-#)
+huntergate(
+  URL "https://github.com/ruslo/hunter/archive/v0.23.34.tar.gz"
+  SHA1 "70287b1ffa810ee4e952052a9adff9b4856d0d54"
+)
 
 project(wallet)
 string(APPEND CMAKE_CXX_FLAGS " -pedantic -Wextra")
