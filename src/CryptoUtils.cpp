@@ -9,7 +9,7 @@ std::vector<byte> from_hex_to_bytes(const std::string& hex) {
     vector_of_bytes.push_back(ibyte);
   }
   return vector_of_bytes;
-};
+}
 
 std::string from_bytes_to_hex(const_bytes bytes, int length) {
   std::string hex;
@@ -17,7 +17,7 @@ std::string from_bytes_to_hex(const_bytes bytes, int length) {
     hex += to_hex(bytes[i]);
   }
   return hex;
-};
+}
 
 std::vector<byte> to_varint_byte(size_t size) {
   std::vector<byte> var_int;
@@ -95,11 +95,11 @@ std::string get_addres_from_script(const std::vector<byte>& bytes) {
 
 std::string from_bytes_to_hex(const std::vector<byte>& bytes) {
   return from_bytes_to_hex(&bytes[0], bytes.size());
-};
+}
 
 std::string SHA256(const std::string& string) {
   return from_bytes_to_hex(SHA256(from_hex_to_bytes(string)));
-};
+}
 
 std::string RIPEMD160(const std::string& string) {
   const auto byte_string = from_hex_to_bytes(string);
@@ -111,7 +111,7 @@ std::string RIPEMD160(const std::string& string) {
   RIPEMD160_Final(hash, &ripemd160);
 
   return from_bytes_to_hex(hash, RIPEMD160_DIGEST_LENGTH);
-};
+}
 
 std::vector<byte> SHA256(const std::vector<byte>& byte_string) {
   byte hash[SHA256_DIGEST_LENGTH];
@@ -124,7 +124,7 @@ std::vector<byte> SHA256(const std::vector<byte>& byte_string) {
   std::memcpy(&a[0], &hash, SHA256_DIGEST_LENGTH);
 
   return a;
-};
+}
 
 std::vector<byte> RIPEMD160(const std::vector<byte>& byte_string) {
   byte hash[RIPEMD160_DIGEST_LENGTH];
@@ -137,7 +137,7 @@ std::vector<byte> RIPEMD160(const std::vector<byte>& byte_string) {
   std::memcpy(&a[0], &hash, RIPEMD160_DIGEST_LENGTH);
 
   return a;
-};
+}
 
 std::string to_hex(byte s) {
   std::stringstream ss;
@@ -180,11 +180,11 @@ std::string to_base58(const_bytes pbegin, const_bytes pend) {
   while (it != b58.end())
     str += Base58[*(it++)];
   return str;
-};
+}
 
 std::string to_base58(const std::vector<byte>& vch) {
   return to_base58(&vch[0], &vch[0] + vch.size());
-};
+}
 
 bool from_base58(const char* psz, std::vector<byte>& vch) {
   // Skip leading spaces.
@@ -231,11 +231,11 @@ bool from_base58(const char* psz, std::vector<byte>& vch) {
   while (it != b256.end())
     vch.push_back(*(it++));
   return true;
-};
+}
 
 bool from_base58(const std::string& str, std::vector<byte>& vchRet) {
   return from_base58(str.c_str(), vchRet);
-};
+}
 
 BIGNUM* get_private_key_from_wif(const std::string& private_key_wif) {
   BIGNUM* prv_key = BN_new();
@@ -250,7 +250,7 @@ BIGNUM* get_private_key_from_wif(const std::string& private_key_wif) {
   BN_hex2bn(&prv_key, from_bytes_to_hex(private_k).c_str());
 
   return prv_key;
-};
+}
 
 EC_KEY* get_ec_key_from_private(const std::string& private_key_wif) {
   EC_KEY* ec_key = EC_KEY_new_by_curve_name(NID_secp256k1);
@@ -270,7 +270,7 @@ EC_KEY* get_ec_key_from_private(const std::string& private_key_wif) {
   BN_clear_free(prv_key);
 
   return ec_key;
-};
+}
 
 EC_KEY* get_ec_key_from_public(const std::string& public_key) {
   EC_KEY* ec_key = EC_KEY_new_by_curve_name(NID_secp256k1);
@@ -287,7 +287,7 @@ EC_KEY* get_ec_key_from_public(const std::string& public_key) {
   BN_CTX_free(ctx);
 
   return ec_key;
-};
+}
 
 ECDSA_SIG* sign(const std::string& private_key, const std::vector<byte>& text) {
   const auto hash = SHA256(SHA256(text));
@@ -302,7 +302,7 @@ ECDSA_SIG* sign(const std::string& private_key, const std::vector<byte>& text) {
   EC_KEY_free(ec_key);
 
   return signature;
-};
+}
 
 bool is_validate_signature(const std::string& public_key,
                            const ECDSA_SIG* signature,
@@ -314,7 +314,7 @@ bool is_validate_signature(const std::string& public_key,
   EC_KEY_free(ec_key);
 
   return flag == 1;
-};
+}
 
 std::string signature_to_der(const ECDSA_SIG* signature) {
   return from_bytes_to_hex(signature_to_der_byted(signature));
