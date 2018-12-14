@@ -1,4 +1,4 @@
-#include "includes/Script.hpp"
+#include <includes/Script.hpp>
 
 Script::Script(const Script& other) : script_(other.script_) {}
 
