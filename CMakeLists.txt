@@ -64,12 +64,14 @@ target_include_directories(tests
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/offline_wallet
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/online_wallet
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+  ${Boost_INCLUDE_DIR}
 )
 
 target_include_directories(wallet
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/offline_wallet
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/online_wallet
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+  ${Boost_INCLUDE_DIR}
 )
 
 qt5_use_modules(wallet 
@@ -80,8 +82,7 @@ qt5_use_modules(wallet
 
 #target_link_libraries(wallet
 #	PUBLIC 
-#	GTest::main 
-#	Boost::boost
+#	GTest::main
 #	Boost::system
 # 	Boost::thread
 #	Boost::filesystem
@@ -91,8 +92,7 @@ qt5_use_modules(wallet
 
 target_link_libraries(tests
 	PUBLIC
-	GTest::main 
-	Boost::boost
+	GTest::main
 	Boost::system
   	Boost::thread
 	Boost::filesystem
