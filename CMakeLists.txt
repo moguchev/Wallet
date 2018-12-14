@@ -23,6 +23,7 @@ find_package(Qt5Gui REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Network REQUIRED)
 
+hunter_config(OpenSSL VERSION 1.0.1h)
 hunter_add_package(OpenSSL)
 find_package(OpenSSL REQUIRED)
 hunter_add_package(GTest)
