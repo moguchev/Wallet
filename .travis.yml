@@ -1,3 +1,4 @@
+os: windows
 sudo: required
 dist: trusty
 language: cpp
