@@ -69,7 +69,7 @@ target_include_directories(tests
 target_include_directories(wallet
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/offline_wallet
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/online_wallet
-  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/includes
+  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 qt5_use_modules(wallet 
