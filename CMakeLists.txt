@@ -14,7 +14,7 @@ huntergate(
 )
 
 project(wallet)
-string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
+string(APPEND CMAKE_CXX_FLAGS " -pedantic -Wall -Wextra")
 string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
 string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 
